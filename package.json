@@ -10,6 +10,11 @@
   "engines": {
     "node": ">=10"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/tracksuitdev/use-imask#readme",
+  "keywords": ["react", "imask", "hooks", "masked input"],
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
