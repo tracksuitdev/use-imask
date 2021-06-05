@@ -17,10 +17,7 @@ function Example() {
   });
 
   return (
-    <div style={{ padding: "10px" }}>
-      <label>{label}</label>
-      <input ref={ref} value={value} />
-    </div>
+    <input ref={ref} value={value} />
   );
 }
 ```
