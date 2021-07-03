@@ -1,6 +1,18 @@
 # use-imask
 React hook that exposes [IMask](https://github.com/uNmAnNeR/imaskjs) object
 
+## Installation
+
+```bash
+npm install use-imask
+```
+
+or if you use yarn
+
+```bash
+yarn add use-imask
+```
+
 ## Usage
 
 ```typescript
