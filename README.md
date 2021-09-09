@@ -1,4 +1,4 @@
-# use-imask
+# use-imask ![npm](https://img.shields.io/npm/v/use-imask)  ![npm bundle size](https://img.shields.io/bundlephobia/minzip/use-imask) ![NPM](https://img.shields.io/npm/l/use-imask)
 React hook that exposes [IMask](https://github.com/uNmAnNeR/imaskjs) object
 
 ## Installation
