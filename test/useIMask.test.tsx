@@ -12,10 +12,10 @@ function TestComponent<T extends AnyMaskedOptions>({
   options: T;
   setValue: (value: UseIMaskReturnValue<T>) => void;
 }) {
-  const { ref, maskRef } = useIMask<T>(options);
+  const [ref, maskRef] = useIMask<T>(options);
 
   useEffect(() => {
-    setValue({ ref, maskRef });
+    setValue([ref, maskRef]);
   }, [maskRef, ref, setValue]);
 
   return <input ref={ref} />;
@@ -27,7 +27,7 @@ describe("usIMask test", () => {
     let result: UseIMaskReturnValue<MaskedDateOptions> | undefined = undefined;
     render(<TestComponent options={options} setValue={value => (result = value)} />);
     expect(result).toBeDefined();
-    expect(((result as unknown) as UseIMaskReturnValue<MaskedDateOptions>).maskRef).toBeDefined();
+    expect(((result as unknown) as UseIMaskReturnValue<MaskedDateOptions>)[1]).toBeDefined();
   });
 
   it("should update mask ref on option change", () => {
@@ -35,10 +35,10 @@ describe("usIMask test", () => {
     let result: unknown;
     const { rerender } = render(<TestComponent options={options} setValue={value => (result = value)} />);
     const typedResult = result as UseIMaskReturnValue<MaskedDateOptions>;
-    const oldRef = { ...typedResult.maskRef?.current };
+    const oldRef = { ...typedResult[1].current };
 
     const otherOptions = { mask: /\d/ };
     rerender(<TestComponent options={otherOptions} setValue={value => (result = value)} />);
-    expect(oldRef.masked?.mask).not.toEqual(typedResult.maskRef?.current?.masked.mask);
+    expect(oldRef.masked?.mask).not.toEqual(typedResult[1].current?.masked.mask);
   });
 });

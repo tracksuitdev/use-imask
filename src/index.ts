@@ -2,16 +2,16 @@ import IMask, { InputMask, MaskElement } from "imask";
 import AnyMaskedOptions = IMask.AnyMaskedOptions;
 import { ChangeEvent, RefObject, useEffect, useRef } from "react";
 
-export type UseIMaskReturnValue<M extends AnyMaskedOptions, E extends HTMLElement | MaskElement = HTMLInputElement> = {
+export type UseIMaskReturnValue<M extends AnyMaskedOptions, E extends HTMLElement | MaskElement = HTMLInputElement> = [
   /**
    * apply this to input you want to mask
    */
-  ref: RefObject<E>;
+  RefObject<E>,
   /**
    * ref with IMask object
    */
-  maskRef?: RefObject<InputMask<M> | undefined>;
-};
+  RefObject<InputMask<M> | undefined>,
+];
 
 export type IMaskHandlers<M extends AnyMaskedOptions, E extends HTMLElement | MaskElement = HTMLInputElement> = {
   onAccept?: (e: ChangeEvent<E>, mask: InputMask<M> | undefined) => void;
@@ -63,5 +63,5 @@ export function useIMask<M extends AnyMaskedOptions, E extends HTMLElement | Mas
     };
   }, []);
 
-  return { ref, maskRef };
+  return [ ref, maskRef ];
 }

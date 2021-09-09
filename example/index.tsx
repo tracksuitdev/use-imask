@@ -21,7 +21,7 @@ const maskOptions = {
 function Example({ maskOptions, label }: { maskOptions: AnyMaskedOptions; label: string }) {
   const [value, setValue] = useState("");
 
-  const { ref } = useIMask(maskOptions, {
+  const [ref] = useIMask(maskOptions, {
     onAccept: e => {
       setValue(e.target.value);
     },

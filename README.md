@@ -15,13 +15,13 @@ yarn add use-imask
 
 ## Usage
 
-```typescript
+```typescript jsx
 const maskOptions = { mask: Number }; // make sure options don't change on each render (use constant or useMemo or ref)
 
 function Example() {
   const [value, setValue] = useState("");
 
-  const { ref } = useIMask(maskOptions, {
+  const [ ref ] = useIMask(maskOptions, {
   // use onAccept callback instead of onChange to change value
     onAccept: e => { 
       setValue(e.target.value);
